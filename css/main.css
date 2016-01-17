@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700);
+
+html, body, .container-fluid {
+	height: 100%;
+}
+
+.center {
+	margin: 0 auto;
+	float: none;
+}
+
+.navbar {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background: #FFF;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+}
+
+.navbar-brand {
+	position: relative;
+	font-family: Lato;
+	background: #333;
+	height: 45px;
+	width: 95px;
+}
+
+#brandFirst {
+	position: relative;
+	font-size: 1.8em;
+	color: #DDD;
+	top: -5px;
+}
+
+#brandSecond {
+	position: relative;
+	font-size: 1.8em;
+	color: #DDD;
+	top: -3px;
+}
+
+#github {
+	height: 50px;
+	margin-top: -18px;
+	margin-bottom: -15px;
+}
