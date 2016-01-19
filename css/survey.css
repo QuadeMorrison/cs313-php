@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900);
+
+body {
+	background: #2B303B;
+	color: #98dafc;
+	font-family: Lato;
+}
+
+#survey {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -60%);
+	text-align: center;
+}
+
+#instructions { 
+	width: 420px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#answers, #checkBoxes {
+	display: inline-block;
+}
+
+.answer {
+	display: inline-block;
+}
+
+.checkbox {
+	display: inline-block;
+	font-family: monospace;
+	font-size: 2em;
+	border: 2px solid #98dafc;
+	padding: 1px 8px 3px 8px;
+	margin: 7px 10px 8px 0px;
+}
+
+h1 {
+	text-align: center;
+	margin: 10px 0;
+	font-weight: 900;
+	font-size: 3em;
+}
+
+h2 {
+	font-weight: 400;
+	margin-bottom: 5px;
+}
