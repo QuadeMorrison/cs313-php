@@ -9,7 +9,7 @@ if (!isset($_SESSION['results'])) {
 <head>
 	<meta charset="UTF-8">
 	<title>Survey</title>
-	<link rel="stylesheet" type="text/css" href="../css/survey.css"
+	<link rel="stylesheet" type="text/css" href="../../css/survey.css"
 </head>
 <body>
 	<div id="survey">

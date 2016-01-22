@@ -3,7 +3,7 @@ var questions = undefined;
 var letters = ["w", "a", "s", "d"];
 
 document.body.onload = function() { 
-	$.getJSON("../json/questions.json").done(function(response) {
+	$.getJSON("../../json/questions.json").done(function(response) {
 		questions = response['questions'];
 		$.get("checkResults.php", function(data, status) {
 			if (status == "success" && data) {
@@ -106,7 +106,7 @@ function sendResults(answer) {
 }
 
 function getResults() {
-	$.getJSON("../json/results.json").done(function(response) {
+	$.getJSON("../../json/results.json").done(function(response) {
 		var results = "<h1>Results</h1>" + "<div class=\"result\">";
 
 		for (var i = 0; i < questions.length; ++i) {
