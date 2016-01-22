@@ -107,6 +107,7 @@ function sendResults(answer) {
 
 function getResults() {
 	$.getJSON("../../json/results.json").done(function(response) {
+		$("#survey").css("transform", "translate(-50%, -50%)");
 		var results = "<h1>Results</h1>" + "<div class=\"result\">";
 
 		for (var i = 0; i < questions.length; ++i) {
