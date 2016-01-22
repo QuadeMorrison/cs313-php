@@ -49,3 +49,35 @@ h2 {
 	font-weight: 400;
 	margin-bottom: 5px;
 }
+
+h3 {
+	margin: 10px;
+	font-size: 1.5em;
+}
+
+h4 {
+	font-weight: 400;
+	margin-top: -20px;
+	font-size: 1.2em;
+	display: inline-block;
+}
+
+.bar {
+	position: relative;
+	left: 0;
+	display: inline-block;
+	width: 7px;
+	height: 20px;
+	margin: 0px 0px -3px 4px;
+	background: #98dafc;
+}
+
+.bar_wrapper {
+	position: relative;
+	left: -50px;
+	display: inline-block;
+}
+
+.result {
+	display: inline-block;
+}

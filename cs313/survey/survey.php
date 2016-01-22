@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['results'])) {
+	$_SESSION['results'] = false;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +31,8 @@
 		</div>
 	</div>
 
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/survey.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="../../js/survey.js"></script>
 </body>
 </html>

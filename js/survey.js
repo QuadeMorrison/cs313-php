@@ -1,21 +1,27 @@
 var whichQuestion = 0;
-var questions = [{question: "How old are you?", 
-				         W: "8-12", A: "13-17", S: "18-21", D: "21+", answer: undefined },
-			   	 {question: "What's your favorite food?",
-			   	 		 W: "Pizza", A: "Burritos", S: "Ice Cream", D: "Steak", answer: undefined },	
-				 {question: "Your ideal date?",
-				 		 W: "Long walks on the beach", 
-				 		 A: "Golfing", S: "Dinner and a movie", 
-				 		 D: "Ice Skating", answer: undefined }]
+var questions = undefined;
+var letters = ["w", "a", "s", "d"];
 
-document.body.onload = function() { parseQuestion(questions[whichQuestion]); }
+document.body.onload = function() { 
+	$.getJSON("../json/questions.json").done(function(response) {
+		questions = response['questions'];
+		$.get("checkResults.php", function(data, status) {
+			if (status == "success" && data) {
+				getResults();
+			}
+			else {
+				parseQuestion(questions[whichQuestion]);
+			}
+		});
+	})
+}
 
 function parseQuestion(question) {
 	$("#question").html(question.question);
-	$("#wAnswer").html(question.W);
-	$("#aAnswer").html(question.A);
-	$("#sAnswer").html(question.S);
-	$("#dAnswer").html(question.D);
+	$("#wAnswer").html(question.w);
+	$("#aAnswer").html(question.a);
+	$("#sAnswer").html(question.s);
+	$("#dAnswer").html(question.d);
 }
 
 function getAnswer(e) {
@@ -48,7 +54,6 @@ function hitReturn() {
 	var answer = undefined;
 	var lightBlue = "#98dafc";
 	var grey = "#2B303B";
-	var letters = ["w", "a", "s", "d"];
 
 	letters.forEach(function(letter) {
 		if ($("#" + letter).css("background-color") == "rgb(152, 218, 252)") {
@@ -67,7 +72,6 @@ function hitReturn() {
 }
 
 function selectAnswer(letter) {
-	var letters = ["w", "a", "s", "d"];
 	var lightBlue = "#98DAFC";
 	var grey = "#2B303B";
 
@@ -82,9 +86,9 @@ function selectAnswer(letter) {
 
 function answerQuestion(answer) {
 	if (answer && whichQuestion < questions.length) {
-		questions[whichQuestion++].answer = answer;
+		sendResults(answer);
 
-		if (whichQuestion < questions.length) {
+		if (++whichQuestion < questions.length) {
 			parseQuestion(questions[whichQuestion]);
 		}
 		else {
@@ -93,12 +97,70 @@ function answerQuestion(answer) {
 	}
 }
 
+function sendResults(answer) {
+	$.post("addResult.php",
+	{
+		letter: answer,
+		questionNumber: whichQuestion
+	});
+}
+
 function getResults() {
-	if (whichQuestion == questions.length) {
-		questions.forEach(function(question) {
-			console.log(question.answer);
-		})
+	$.getJSON("../json/results.json").done(function(response) {
+		var results = "<h1>Results</h1>" + "<div class=\"result\">";
+
+		for (var i = 0; i < questions.length; ++i) {
+			var totalVotes = 0;
+
+			for (var j = 0; j < letters.length; ++j) {
+				totalVotes += response["results"][i][letters[j]];
+			}
+
+			if (i % 2 === 0 && i != 0) {
+				results += "</div><div class=\"result\">";
+			}
+
+			results += 
+			"<h3>" + questions[i]["question"] + "</h3><br />";
+			for (var j = 0; j < letters.length; ++j) {
+				results +=
+				"<h4>" + questions[i][letters[j]] +
+				"</h4>";
+				results += "&nbsp;&nbsp;&nbsp;" +
+					calculateResults(response["results"][i][letters[j]],
+										totalVotes);
+			}
+		}
+
+		results += "</div>"
+
+		$("#survey").html(results);
+
+		$(".bar_wrapper").hide().fadeIn({queue: false, duration: 2000});
+		$(".bar_wrapper").animate({ left: 0 }, 800);
+	})
+}
+
+function calculateResults(letter, totalVotes) {
+	var bar = "";
+	var percent = 0;
+
+	percent = letter / totalVotes * 100;
+
+	bar += "<div class=\"bar_wrapper\">";
+
+	for (var i = 0; i < percent / 10; ++i) {
+		bar += "<div class=\"bar\"></div>";
 	}
+
+	//bar += "&nbsp;&nbsp;" + (Math.floor(percent * 100) / 100) + 
+			//"%</div></br>"
+
+			bar += "&nbsp;&nbsp;&nbsp;" 
+				 + Math.floor(percent * 100) / 100 
+				 + "%</div></br>";
+
+	return bar;
 }
 
 $(document).ready(function() {

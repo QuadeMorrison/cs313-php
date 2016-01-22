@@ -1,0 +1,32 @@
+{
+	"questions" : [
+		{ 
+			"question": "How old are you?",
+			"w": "6-8",
+			"a": "9-12",
+			"s": "13-18",
+			"d": "18+"
+		},
+		{
+			"question": "What's your favorite food?",
+			"w": "Pizza",
+			"a": "Steak",
+			"s": "Ice Cream",
+			"d": "Chocolate"
+		},
+		{
+			"question": "What's your ideal date?",
+			"w": "Long walks on the beach",
+			"a": "Golf",
+			"s": "Netflix",
+			"d": "I don't have a date"
+		},
+		{
+			"question": "Marital Status",
+			"w": "Single",
+			"a": "In the game",
+			"s": "In a relationship",
+			"d": "Married"
+		}
+	]
+}
