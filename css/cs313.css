@@ -5,3 +5,11 @@
 #sm-header {
 	font-size: 8em;
 }
+
+.assignment {
+	text-align: center;
+	color: #333;
+	font-size: 3em;
+	font-weight: bold;
+	text-decoration: underline;
+}

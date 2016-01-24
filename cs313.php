@@ -35,9 +35,7 @@
 			</div>	
 		</nav>
 
-		<h1 id="lg-header" class="hidden-xs col-lg-offset-2 
-								  col-md-offset-1 col-sm-offset-1">Coming<br /> soon.</h1>
-		<h1 id="sm-header" class="hidden-lg hidden-md hidden-sm">Coming soon.</h1>
+		<a href="./cs313/survey/survey.php"><h1 class="assignment">Survey</h1></a>
 
 	</div>
 
