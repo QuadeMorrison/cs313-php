@@ -44,10 +44,28 @@ function getAnswer(e) {
     	selectAnswer("d");
     	break;
 
+    	case 66: // B
+    	console.log("test");
+    	canYouGoBack();
+    	break;
+
+    	case 82: // R
+    	getResults();
+    	break;
+
     	case 13: // Return
     	hitReturn();
     	break;
     }
+}
+
+function canYouGoBack() {
+	$.get("checkResults.php", function(data, status) {
+		if (status == "success" && !data) {
+			$("#resultsPage").css("display", "none");
+			$("#survey").css("display", "block");
+		}
+	});
 }
 
 function hitReturn() {
@@ -107,7 +125,7 @@ function sendResults(answer) {
 
 function getResults() {
 	$.getJSON("../../json/results.json").done(function(response) {
-		$("#survey").css("transform", "translate(-50%, -50%)");
+		$("#survey").css("display", "none");
 		var results = "<h1>Results</h1>" + "<div class=\"result\">";
 
 		for (var i = 0; i < questions.length; ++i) {
@@ -133,12 +151,20 @@ function getResults() {
 			}
 		}
 
-		results += "</div>"
+		results += "</div>";
 
-		$("#survey").html(results);
+		$.get("checkResults.php", function(data, status) {
+			if (status == "success" && !data) {
+				results += "<h2 id=\"backToSurvey\">Hit \"B\" to return to the survey";
+			}
 
-		$(".bar_wrapper").hide().fadeIn({queue: false, duration: 2000});
-		$(".bar_wrapper").animate({ left: 0 }, 800);
+			$("#resultsPage").html(results);
+			$("#resultsPage").css("display", "block");
+
+			$(".bar_wrapper").hide().fadeIn({queue: false, duration: 2000});
+			$(".bar_wrapper").animate({ left: 0 }, 800);
+		});
+
 	})
 }
 
@@ -154,12 +180,10 @@ function calculateResults(letter, totalVotes) {
 		bar += "<div class=\"bar\"></div>";
 	}
 
-	//bar += "&nbsp;&nbsp;" + (Math.floor(percent * 100) / 100) + 
-			//"%</div></br>"
 
-			bar += "&nbsp;&nbsp;&nbsp;" 
-				 + Math.floor(percent * 100) / 100 
-				 + "%</div></br>";
+	bar += "&nbsp;&nbsp;&nbsp;" 
+	+ Math.floor(percent * 100) / 100 
+	+ "%</div></br>";
 
 	return bar;
 }

@@ -12,6 +12,8 @@ if (!isset($_SESSION['results'])) {
 	<link rel="stylesheet" type="text/css" href="../../css/survey.css"
 </head>
 <body>
+	<div id="resultsPage">
+	</div>
 	<div id="survey">
 		<p id="instructions">
 			Make your choice using the WASD keys on your keyboard
@@ -29,6 +31,7 @@ if (!isset($_SESSION['results'])) {
 			<h2 id="sAnswer" class="answer"></h2><br />
 			<h2 id="dAnswer" class="answer"></h2><br />
 		</div>
+		<h2 id="goToResults">Hit "R" to see the results</h2>
 	</div>
 
 	<script src="../../js/jquery.min.js"></script>
