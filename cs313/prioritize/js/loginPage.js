@@ -12,5 +12,6 @@ function logIn(data, status) {
 	$('#main').html(data);
 
 	var currentTitle = $('#title').attr('class').split()[0];
-	$(prevTitle + ":first").attr("href", "css/" + currentTitle + ".css");
+	$(prevTitle + ":first").attr({"class": currentTitle, 
+								  "href": "css/" + currentTitle + ".css"});
 }
