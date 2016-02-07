@@ -1,0 +1,29 @@
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#main, .container, .row {
+	height: 100%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.login_content {
+	margin: 0 !important;
+}
+
+.btn {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.login {
+	position: relative;
+	top: 45%;
+	left: 50% !important;
+	transform: translate(-50%, -50%);
+}
