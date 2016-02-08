@@ -1,15 +1,25 @@
 <div id="title" class="index"></div>
 <header>
-	<ul id="side_nav" class="side-nav fixed">
 	</ul>
 
 	<nav>
 		<div class="teal lighten-1 nav-wrapper">
 			<a id="logo" href="#" class="brand-logo">Prioritizer</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li id="welcome">Welcome back</li>
-				<li><a href="badges.html"><?php echo $_SESSION['user']; ?></a></li>
+			<ul id="nav-mobile" class="right">
+				<li id="welcome" class="hide-on-med-and-down">Welcome back</li>
+				<li>
+					 <!-- Dropdown Trigger -->
+					 <a class='dropdown-button' href='#' data-activates='user-drop'><?php echo $_SESSION['user']; ?></a>
+
+					 <!-- Dropdown Structure -->
+					 <ul id='user-drop' class='dropdown-content'>
+					 	<li><a id="log-out" href="#!">Log Out</a></li>
+					 </ul>
+				</li>
 			</ul>
+	<ul id="slide-out" class="side-nav fixed">
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 		</div>
 	</nav>
 </header>

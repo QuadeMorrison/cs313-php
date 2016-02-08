@@ -7,13 +7,14 @@ try {
 	$db = loadDatabase();
 	$queryString = "SELECT password FROM user WHERE email='$email'";
 	$query = $db->query($queryString);
+	$string = $query->fetchColumn();
 
-	if ($query->fetchColumn() === $_POST['password']) {
+	if ($string === $_POST['password']) {
 		$_SESSION['user'] = $email;
 		$content = file_get_contents('schedules.php');
 		echo eval(' ?>'. $content);
 	} else {
-		echo "Invalid login";
+		echo "invalid";
 	}
 
 } catch (PDOException $ex) {

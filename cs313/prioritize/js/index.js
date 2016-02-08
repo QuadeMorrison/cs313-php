@@ -9,9 +9,31 @@ var COLORS = [ 'red-border',
 $(document).ready(function () {
 	$.getJSON("getSchedules.php", scheduleToNav);
 
-	$("#side_nav").on("click", "li>a", function() {
+	$("#slide-out").on("click", "li>a", function() {
 		changeActive(this);
 		createSchedule($(this).text());
+	});
+
+	$('.button-collapse').sideNav({ edge: 'left', closeOnClick: false });
+
+	$('.side-nav').on('click', function(e) {
+		w = $(window).width();
+		if (w < 992) {
+			$('.button-collapse').sideNav('hide');;
+		}
+	});
+
+	$('.dropdown-button').dropdown({
+    	inDuration: 300,
+    	outDuration: 225,
+     	constrain_width: false, // Does not change width of dropdown to that of the activator
+     	hover: true, // Activate on hover
+     	belowOrigin: true, // Displays dropdown below the button
+     	alignment: 'left' // Displays dropdown with edge aligned to the left of button
+  	});
+
+	$('#log-out').click(function() {
+		$.ajax({ url: "logOut.php", success: logIn, async: true });
 	});
 });
 
@@ -25,7 +47,7 @@ function scheduleToNav(schedules) {
 	var liClass = "active";
 
 	schedules.forEach(function(schedule) {
-		$("#side_nav").append('<li class=' + liClass + '><a class="nav_button waves-effect waves-teal"' + 
+		$("#slide-out").append('<li class=' + liClass + '><a class="nav_button waves-effect waves-teal"' + 
 			                  ' href="#!" value="0">' + schedule['name'] + '</a></li>');
 
 		if (first) {
@@ -56,4 +78,14 @@ function createEvents(data, status) {
 								'<div class="card-content">' + event['startTime'] + '-' + event['endTime'] + "</div>" +
 							'</div>');
 	});
+}
+
+function logIn(data, status) {
+	var prevTitle = '.' + $('#title').attr('class').split()[0];
+	$(prevTitle + "[src]").remove();
+	$('#main').html(data);
+
+	var currentTitle = $('#title').attr('class').split()[0];
+	$(prevTitle + ":first").attr({"class": currentTitle, 
+								  "href": "css/" + currentTitle + ".css"});
 }
