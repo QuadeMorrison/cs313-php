@@ -8,6 +8,13 @@ $(document).ready(function() {
 			$.ajax({ url: "login.php", type: "POST", data: user, success: logIn, async: true });
 		}
 	});
+
+	/** Make the enter key work as expected **/
+	$(document).keydown(function(e) {
+		if (e.keyCode == 13) {
+			$('#login-btn').trigger('click');
+		}
+	});
 });
 
 /** Helper function for login ajax request **/
@@ -43,4 +50,7 @@ function validateLogin() {
 	e.html(eMessage);
 
 	return valid;
+}
+
+function loginBtn() {
 }

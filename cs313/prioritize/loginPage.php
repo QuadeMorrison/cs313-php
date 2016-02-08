@@ -7,16 +7,18 @@
       </div>
       <div class="card-panel login_content">
         <div id="error" class="card-content"></div>
-        <div class="input-field">
-          <input id="email" type="text" class="validate">
-          <label for="email">Email Address</label>
-        </div>
-        <div class="input-field">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-        <div class="center-btn">
-          <a id="login-btn" class="waves-effect waves-light blue lighten-2 btn">Login</a>
+        <form>
+          <div class="input-field">
+            <input id="email" type="text" class="validate">
+            <label for="email">Email Address</label>
+          </div>
+          <div class="input-field">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+          <div class="center-btn">
+            <a id="login-btn" class="waves-effect waves-light blue lighten-2 btn">Login</a>
+          </form>
           <a id="sign-up-btn" class="waves-effect waves-light red lighten-2 btn">Sign Up</a>
         </div>
       </div>

@@ -5,11 +5,13 @@ require_once "config.php";
 try {
 	$email = $_POST['email'];
 	$db = loadDatabase();
-	$queryString = "SELECT password FROM user WHERE email='$email'";
-	$query = $db->query($queryString);
-	$string = $query->fetchColumn();
 
-	if ($string === $_POST['password']) {
+	$queryString = "SELECT password FROM user WHERE email=?";
+	$query = $db->prepare($queryString);
+	$query->execute(array($email));
+	$result = $query->fetchColumn();
+
+	if ($result === $_POST['password']) {
 		$_SESSION['user'] = $email;
 		$content = file_get_contents('schedules.php');
 		echo eval(' ?>'. $content);
