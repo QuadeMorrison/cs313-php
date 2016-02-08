@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user'])) {
+// check if user is already logged in
+if (isset($_SESSION['user'])) { // take user to their schedules
 	$content = file_get_contents('schedules.php');
 	echo eval(' ?>'. $content);
-} else {
+} else { // take user to login page
 	readfile('loginPage.php');
 }
 ?>

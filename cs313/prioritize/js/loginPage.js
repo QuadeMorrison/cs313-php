@@ -1,39 +1,32 @@
 $(document).ready(function() {
+	/** If user login information is valid the attempt to log user in **/
 	$('#login-btn').click(function() {
-		var valid = validateLogin();
+		var valid = validateLogin(); // validate first
 
 		if (valid) {
-			$('#error').html("");
 			var user = { email: $('#email').val(), password: $('#password').val() };
 			$.ajax({ url: "login.php", type: "POST", data: user, success: logIn, async: true });
 		}
 	});
 });
 
+/** Helper function for login ajax request **/
 function logIn(data, status) {
-	if (data != "invalid") {
-		loadPage(data);
+	if (data != "invalid") { // successfully found user in database
+		loadPage(data); // from loadPage.js
 	} else {
-		invalidLogin();
+		invalidLogin(); // Warn user their credintials were invalid
 	}
 }
 
-function loadPage(data) {
-	var prevTitle = '.' + $('#title').attr('class').split()[0];
-	$(prevTitle + "[src]").remove();
-	$('#main').html(data);
-
-	var currentTitle = $('#title').attr('class').split()[0];
-	$(prevTitle + ":first").attr({"class": currentTitle, 
-		"href": "css/" + currentTitle + ".css"});
-}
-
+/** Change error message to indicate invalid credentials **/
 function invalidLogin() {
 	var e = $('#error');
 	var eMessage = "Either your email or password didn't match up with an existing account";
 	e.html(eMessage); 
 }
 
+/** Check if user input is valid on the clientside **/
 function validateLogin() {
 	var eMessage = "";
 	var e = $('#error');

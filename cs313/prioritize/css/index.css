@@ -41,6 +41,21 @@
 	margin-left: 20px;
 }
 
+#plus, #new-schedule {
+	display: inline-block;
+	color: #e0f2f1;
+	position: relative;
+	font-weight: bold;
+}
+
+#plus {
+}
+
+#new-schedule {
+	top: -8px;
+	left: 10px;
+}
+
 header, main, footer {
     padding-left: 240px;
 }

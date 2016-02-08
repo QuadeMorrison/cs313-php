@@ -18,6 +18,7 @@ session_start();
   </div>
   <script type="text/javascript" src="../../js/jquery.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/loadPage.js"></script>
   <script class="checkSession" type="text/javascript" src="js/checkSession.js"></script>
 </body>
 </html>
