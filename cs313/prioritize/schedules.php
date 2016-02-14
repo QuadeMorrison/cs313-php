@@ -1,4 +1,5 @@
 <div id="title" class="index"></div>
+<div id="transparent-bg"></div>
 <header>
 	</ul>
 
@@ -24,7 +25,15 @@
 	</nav>
 </header>
 <main>
-	<div id="events" class="row">
-	</div>
+  <div id="creationWizard">
+   <div id="row-wrapper" class="row">
+   </div>
+  </div>
+<div id="events" class="row">
+</div>
+<a id="newEvent" class="btn-floating btn-large tooltipped waves-effect waves-light red"
+	data-position="top" data-delay="50" data-tooltip="Add an Event">
+	<i class="material-icons">add</i>
+</a>
 </main>
 <script class="index" type="text/javascript" src="js/index.js"></script>

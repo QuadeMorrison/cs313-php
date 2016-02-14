@@ -3,7 +3,7 @@ session_start();
 require_once "config.php";
 
 try {
-	$email = $_POST['email'];
+$email = $_POST['email'];
 	$db = loadDatabase();
 
 	$queryString = "SELECT password FROM user WHERE email=?";

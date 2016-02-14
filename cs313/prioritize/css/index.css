@@ -1,3 +1,14 @@
+html, body, #main {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    position: relative;
+    height: calculate(100% - 82px);
+}
+
 @media screen and (min-width: 992px) {
 	#logo {
 		margin-left: 20px;
@@ -67,9 +78,57 @@ header, main, footer {
 }
 
 #welcome {
-	padding-right: 8px;	
+	padding-right: 8px;
 }
 
 .nav_button {
 	font-weight: bold;
+}
+
+#transparent-bg {
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+#creationWizard {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.row {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.center-content {
+    position: relative;
+    left: 50% !important;
+    transform: translate(-50%);
+    margin: 0;
+}
+
+.card-panel {
+    margin: 0;
+}
+
+.center-btn {
+    text-align: center;
+}
+
+.btn {
+    width: 47%;
+    margin: 0 1% 0 1%;
+}
+
+#newEvent {
+    margin: 0 3em 0 3em;
 }

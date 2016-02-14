@@ -9,6 +9,10 @@ $(document).ready(function() {
 		}
 	});
 
+    $('#signup-btn').click(function() {
+      $.ajax({ url: "signupPage.php", success: loadPage, async: true });
+    });
+
 	/** Make the enter key work as expected **/
 	$(document).keydown(function(e) {
 		if (e.keyCode == 13) {
@@ -30,7 +34,7 @@ function logIn(data, status) {
 function invalidLogin() {
 	var e = $('#error');
 	var eMessage = "Either your email or password didn't match up with an existing account";
-	e.html(eMessage); 
+	e.html(eMessage);
 }
 
 /** Check if user input is valid on the clientside **/
@@ -39,18 +43,15 @@ function validateLogin() {
 	var e = $('#error');
 	var valid = true;
 
-	if ($('#email').val().search('^[\\w@.]+') != 0) {
-		var eMessage = "Your email is either empty or contains invalid characters (premitted characters are a-z, @ and .)";
+	if ($('#email').val().search('^[\\w@.]+') !== 0) {
+		eMessage = "Your email is either empty or contains invalid characters (premitted characters are a-z, @ and .)";
 		valid = false;
-	} else if ($('#password').val().search('^[\\w\\W]+') != 0) {
-		var eMessage = "You must enter a password";
+	} else if ($('#password').val().search('^[\\w\\W]+') !== 0) {
+		eMessage = "You must enter a password";
 		valid = false;
 	}
 
 	e.html(eMessage);
 
 	return valid;
-}
-
-function loginBtn() {
 }

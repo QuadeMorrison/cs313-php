@@ -20,7 +20,7 @@ $(document).ready(function () {
 	 	collapsing on large screens **/
 	$('.button-collapse').sideNav({ edge: 'left', closeOnClick: false });
 
-	/** collapse side-nav on mobile devices when clicked **/ 
+	/** collapse side-nav on mobile devices when clicked **/
 	$('.side-nav').on('click', function(e) {
 		w = $(window).width();
 		if (w < 992) { // Anything smaller is a small mobile screen
@@ -41,9 +41,30 @@ $(document).ready(function () {
 	/** Calls request to end session and log user out **/
 	$('#log-out').click(function() {
 		// loadPage function from loadPage.js
+
 		$.ajax({ url: "logOut.php", success: loadPage, async: true });
 	});
+
+	$('#slide-out').on('click', '#new-schedule', function() {
+		$.ajax({ url: "newSchedule.php", success: creationWizard, async: true });
+	});
+
+	$('#newEvent').on('click', function() {
+		$.ajax({ url: "newEvent.php", success: creationWizard, async: true });
+	});
+
+	$('.tooltipped').tooltip({delay: 50});
 });
+
+function creationWizard(data, status) {
+	$('#creationWizard .row').html("");
+	$('#creationWizard .row').html(data);
+
+	$('#transparent-bg').fadeIn("fast");
+	$('#creationWizard').fadeIn("fast");
+	$('#events').fadeOut("fast");
+	$('#newEvent').fadeOut("fast");
+}
 
 /** Switches css to indicate which schedule is active in the side-nav **/
 function changeActive(button) {
@@ -73,7 +94,7 @@ function scheduleToNav(schedules) {
 
 /** Provides html for a schedule button for the side-nav **/
 function createScheduleButton(scheduleName, liClass) {
-	var button = '<li class=' + liClass + '><a class="nav_button waves-effect waves-teal"' + 
+	var button = '<li class=' + liClass + '><a class="nav_button waves-effect waves-teal"' +
 			                  ' href="#!" value="0">' + scheduleName + '</a></li>';
 
 	return button;
@@ -82,8 +103,8 @@ function createScheduleButton(scheduleName, liClass) {
 /** Provides html for newScheduleButton **/
 function createNewButton() {
 	var button = '<li class="teal lighten-2">' +
-		'<a class="waves-effect waves-red waves-lighten">' + 
-		'<i id="plus" class="material-icons" style="display:inline-block">add</i>' + 
+		'<a class="waves-effect waves-red waves-lighten">' +
+		'<i id="plus" class="material-icons" style="display:inline-block">add</i>' +
 		'<span id="new-schedule">NEW SCHEDULE</span></a></li>';
 
 	return button;
@@ -91,7 +112,7 @@ function createNewButton() {
 
 /** Generates a schedule and replaces onscreen schedule **/
 function createSchedule(scheduleName) {
-	$.ajax({ url: "getEvents.php", 
+	$.ajax({ url: "getEvents.php",
 			 type: "POST",
 			 data: { scheduleName: scheduleName },
 			 success: createEvents });
@@ -111,7 +132,7 @@ function createEvents(data, status) {
 
 /** Creates a properly formatted event card **/
 function createEventCard(event, colorNum) {
-	var event = '<div class="card col lg3 md4 sm12 ' + COLORS[colorNum++] + '">' + 
+	var event = '<div class="card col lg3 md4 sm12 ' + COLORS[colorNum++] + '">' +
 		'<span class="card-title">' + event['name'] + '</span>' +
 		'<div class="card-content">' + event['description'] + '</div>' +
 		'<div class="card-content">' + event['startTime'] + '-' + event['endTime'] + "</div>" +
