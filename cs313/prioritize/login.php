@@ -5,11 +5,13 @@ require_once "config.php";
 try {
 $email = $_POST['email'];
 	$db = loadDatabase();
+	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 	$queryString = "SELECT password FROM user WHERE email=?";
 	$query = $db->prepare($queryString);
 	$query->execute(array($email));
 	$result = $query->fetchColumn();
+	print_r($db->errorInfo());
 
 	if (password_verify($_POST['password'], $result)) {
 		$_SESSION['user'] = $email;
@@ -20,7 +22,7 @@ $email = $_POST['email'];
 	}
 
 } catch (PDOException $ex) {
-	echo $ex;
+	echo $ex->getMessage();
 }
 
 
