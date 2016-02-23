@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "config.php";
+include "password.php"
 
 try {
 $email = $_POST['email'];
