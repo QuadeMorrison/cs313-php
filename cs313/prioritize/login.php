@@ -11,7 +11,7 @@ $email = $_POST['email'];
 	$query->execute(array($email));
 	$result = $query->fetchColumn();
 
-	if ($result === $_POST['password']) {
+	if (password_verify($_POST['password'], $result)) {
 		$_SESSION['user'] = $email;
 		$content = file_get_contents('schedules.php');
 		echo eval(' ?>'. $content);

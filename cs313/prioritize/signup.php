@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+require "password.php";
 $email = $_POST['email'];
 $password = $_POST['password'];
 $password_conf = $_POST['password_conf'];
@@ -19,9 +20,10 @@ if ($numRows > 0) {
 } else if (strlen($password) < 6) {
     echo "Your password must be atleast 6 characters";
 } else {
+	$passwordHash = password_hash($password, PASSWORD_DEFAULT);
     $queryString = "INSERT INTO user(email, password) VALUES(:email, :password)";
     $signUp = $db->prepare($queryString);
-    $signUp->execute(array(':email' => $email, ':password' => $password));
+    $signUp->execute(array(':email' => $email, ':password' => $passwordHash));
     echo "Success";
 }
 ?>

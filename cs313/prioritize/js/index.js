@@ -4,7 +4,7 @@ var COLORS = [ 'red-border',
 			   'yellow-border',
 			   'purple-border',
 			   'green-border',
-			   'organ-border' ];
+			   'orange-border' ];
 
 $(document).ready(function () {
 	/** Fill sidenav with user's schedules from database **/
@@ -89,6 +89,10 @@ function scheduleToNav(schedules) {
 		}
 	});
 
+	if (first) {
+		$("#newEvent").css("display", "none");
+	}
+
 	so.append(createNewButton());
 }
 
@@ -127,6 +131,7 @@ function createEvents(data, status) {
 
 	events.forEach(function(event) {
 		e.append(createEventCard(event, colorNum++));
+		colorNum %= 6;
 	});
 }
 
@@ -135,8 +140,29 @@ function createEventCard(event, colorNum) {
 	var event = '<div class="card col lg3 md4 sm12 ' + COLORS[colorNum++] + '">' +
 		'<span class="card-title">' + event['name'] + '</span>' +
 		'<div class="card-content">' + event['description'] + '</div>' +
-		'<div class="card-content">' + event['startTime'] + '-' + event['endTime'] + "</div>" +
-		'</div>';
+		'<div class="card-content">' + formatTime(event['startTime']) + ' - ' + 
+		formatTime(event['endTime']) + "</div>" + '</div>';
 
 	return event;
+}
+
+function formatTime(time) {
+	time = time.split(':');
+	var hour = time[0];
+	var am_pm;
+
+	if (hour >= 12) {
+		am_pm = "PM";
+		if (hour != 12) {
+			hour = +hour - 12;
+		}
+	} else {
+		am_pm = "AM";
+		hour = +hour;
+		if (hour == 0) {
+			hour = 12;
+		}
+	}
+
+	return hour + ':' + time[1] + am_pm;
 }

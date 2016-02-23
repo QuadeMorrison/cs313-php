@@ -15,6 +15,7 @@
 					<span id="day-start" class="col">When does your day start?</span>
 					<div class="input-field col l2 m2 s12">
 						<select id="start-hour">
+							<option value="00">00</option>
 							<option value="01">01</option>
 							<option value="02">02</option>
 							<option value="03">03</option>
