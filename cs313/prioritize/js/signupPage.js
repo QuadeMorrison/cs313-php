@@ -9,7 +9,7 @@ $(document).ready(function() {
       var password_conf = $('#password-conf').val();
       var user = { email: email, password: password, password_conf: password_conf };
 
-      $.ajax({ url: "signup.php", type: "POST", data: user, success: signup, asyn: true });
+      $.ajax({ url: "signup.php", type: "POST", data: user, success: signup, async: true });
     }
   });
 
