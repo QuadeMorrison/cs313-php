@@ -37,6 +37,7 @@
 
 		<a href="./cs313/survey/survey.php"><h1 class="assignment">Survey</h1></a>
 		<a href="./cs313/prioritize/index.php"><h1 class="assignment">Prioritize</h1></a>
+		<a href="http://java-quademorrison.rhcloud.com/discussionThread/"><h1 class="assignment">Messenger</h1></a>
 
 	</div>
 
