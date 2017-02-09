@@ -17,7 +17,7 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.php">
-						<span id="brandFirst">Q</span> 
+						<span id="brandFirst">Q</span>
 						<span id="brandSecond">M</span>
 					</a>
 					<ul class="nav navbar-nav navbar-right">
@@ -30,7 +30,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.php">Home</a></li>
 					<li class="active"><a href="#">About</a></li>
-					<li><a href="cs313.php">CS-313</a></li>
+					<li><a href="resume.pdf">Resume</a></li>
+					<li><a href="projects.php">Projects</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -51,13 +52,13 @@
 					television like Parks and Rec) If not evident in my choice of major I'm a
 					huge nerd. If I'm not doing (being?) any of the above I like to play
 					guitar and pretend that I can sing. Fortunately for me, and maybe
-					unfortunate for you, I can't give any live demos. (Nor will I if you 
+					unfortunate for you, I can't give any live demos. (Nor will I if you
 					happen to ask) <br /><br />
 
 					Apparently I don't like having my picture taken, because shockingly I have
 					zero pictures of me that would be appropriate for an about page like this.
 					(I'm working on it!) So until something better comes along you're going to
-					have to deal with this photo taken with a bad camera under bad lighting. 
+					have to deal with this photo taken with a bad camera under bad lighting.
 					(I'm the second from the left doing something weird with my neck)
 				</p>
 			</div>

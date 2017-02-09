@@ -17,7 +17,7 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<span class="navbar-brand">
-						<span id="brandFirst">Q</span> 
+						<span id="brandFirst">Q</span>
 						<span id="brandSecond">M</span>
 					</span>
 				<ul class="nav navbar-nav navbar-right">
@@ -30,7 +30,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="#">Home</a></li>
 					<li><a href="about.php">About</a></li>
-					<li><a href="cs313.php">CS-313</a></li>
+					<li><a href="resume.pdf">Resume</a></li>
+					<li><a href="projects.php">Projects</a></li>
 				</ul>
 			</div>
 		</nav>
