@@ -46,12 +46,9 @@
 					cold and snowy as Calgary... <br /><br />
 
 					I'm currently going to school for a Bachelors in Computer Science, and I'm
-					in my sophomore year. I enjoy programming, but don't expect me to get much
-					done. (I like to pretend my laziness is a result of an innate desire to
-					learn, so I'd prefer to spend my personal time watching informative
-					television like Parks and Rec) If not evident in my choice of major I'm a
-					huge nerd. If I'm not doing (being?) any of the above I like to play
-					guitar and pretend that I can sing. Fortunately for me, and maybe
+               in my junior year. I enjoy programming, and If not evident in my choice of
+               major I'm a huge nerd. If I'm not doing (being?) any of the above I like
+               to play guitar and pretend that I can sing. Fortunately for me, and maybe
 					unfortunate for you, I can't give any live demos. (Nor will I if you
 					happen to ask) <br /><br />
 
